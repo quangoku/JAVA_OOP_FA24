@@ -1,6 +1,4 @@
-/**
- * @author DucPTM
- */
+
 
  
 package car_manager;
@@ -58,7 +56,6 @@ public class BrandList extends ArrayList <Brand> {
         return false;
     }
 
-    //Open the file based on the filename to write data in line-by-line text format
     public int searchID (String bID) {
         for (int i = 0; i < this.size(); i++) {
             if (bID.equals(this.get(i).getBrandID())) {
@@ -68,13 +65,11 @@ public class BrandList extends ArrayList <Brand> {
         return -1;
     }
 
-    //Transform the list to a menu, the user will choose a brand from this menu
     public Brand getUserChoice () {
         Menu menu = new Menu();
         return (Brand) menu. ref_getChoice(this);
     }
 
-    //Add a new Brand to the list
     public void addBrand () {
         boolean checkBrandID = false;
         //System.out.println("Test: " + this.get(2).getBrandID());
@@ -123,7 +118,6 @@ public class BrandList extends ArrayList <Brand> {
         System.out.println("Brand has added successfully");
     }
 
-    //Update brand_name, sound_brand, price of an existed brand
     public void updateBrand () {
         do {
             System.out.print("Input brand ID: ");
@@ -167,7 +161,6 @@ public class BrandList extends ArrayList <Brand> {
         System.out.println("Brand has updated successfully !");
     }
 
-    //Show the list of the brands
     public void listBrands() {
         for (int i = 0; i < this.size(); i++) {
             System.out.println(this.get(i));
