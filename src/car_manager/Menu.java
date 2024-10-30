@@ -9,7 +9,6 @@ public class Menu {
     private int response;
     private Scanner scanner = new Scanner (System.in);
     
-    //For the menu list
     public int int_getChoice (ArrayList <String> options) {
         for (String i: options) {
             System.out.println(i);
@@ -19,7 +18,6 @@ public class Menu {
         return response;
     }
 
-    //Get user choice as an integer
     public int int_getChoice (BrandList brand) {
         int n = brand.size();
         for (int i = 0; i < n; i++) {
@@ -30,7 +28,6 @@ public class Menu {
         return response;
     }
 
-    //Get user choice as an object in the list
     public Brand ref_getChoice (BrandList options) {
         int N = options.size();
         System.out.println("Brand ID List:");

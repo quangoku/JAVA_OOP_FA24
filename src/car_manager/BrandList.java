@@ -3,20 +3,17 @@
  
 package car_manager;
 
-import java.io.BufferedReader;
-import java.io.FileNotFoundException;
-import java.io.FileReader;
-import java.io.FileWriter;
-import java.io.IOException;
-import java.io.PrintWriter;
-import java.util.ArrayList;
-import java.util.Scanner;
+import java.io.*;
+import java.util.*;
 
 public class BrandList extends ArrayList <Brand> {
+    
     private String brandID, brandName, soundBrand;
     private double price;
     private int pos;
+    
     Scanner scanner = new Scanner(System.in);
+    
     PrintWriter pw;
     BufferedReader br;
 
@@ -34,9 +31,9 @@ public class BrandList extends ArrayList <Brand> {
                 this.add(new Brand(brandID, brandName, soundBrand, price));
                 line = br.readLine();
             }
-            br.close();
+            br.close(); // nho giai phong bo nho sau khi su dung
             return true;
-        } catch (FileNotFoundException e) {
+        } catch (Exception e) {
             System.out.println("File " + fileName + " not found !");
         }
         return false;
@@ -48,7 +45,8 @@ public class BrandList extends ArrayList <Brand> {
             for (Brand i: this) {
                 pw.println(i);
             }
-            pw.close();
+            pw.close(); // giai phong bo nho sau khi dung
+            System.out.println("DONE SAVE");
             return true;
         } catch (IOException e) {
             e.printStackTrace();
@@ -72,7 +70,6 @@ public class BrandList extends ArrayList <Brand> {
 
     public void addBrand () {
         boolean checkBrandID = false;
-        //System.out.println("Test: " + this.get(2).getBrandID());
         do {
             System.out.print("Input brand ID: ");
             brandID = scanner.nextLine();
@@ -134,7 +131,7 @@ public class BrandList extends ArrayList <Brand> {
             if (brandName.equals("") != true) {
                 break;
             }
-            System.out.println("The brand name must not be null. Try again !");
+            System.out.println("The brand name can not be null. Try again !");
         } while (true);
         do {
             System.out.print("Input sound brand: ");
@@ -142,14 +139,14 @@ public class BrandList extends ArrayList <Brand> {
             if (soundBrand.equals("") != true) {
                 break;
             }
-            System.out.println("The sound brand must not be null. Try again !");
+            System.out.println("The sound brand can not be null. Try again !");
         } while (true);
         do {
             System.out.print("Input price: ");
             try {
                 price = Double.parseDouble(scanner.nextLine());
                 if (price <= 0) {
-                    System.out.println("The price must not be null. Try again !");
+                    System.out.println("The price can not be null. Try again !");
                     price = 0;
                 }
             } catch (NumberFormatException e) {
@@ -157,7 +154,7 @@ public class BrandList extends ArrayList <Brand> {
                 price = 0;
             }
         } while (price == 0);
-        this.get(0).setUpdatedBrand(brandName, soundBrand, price);
+        this.get(pos).setUpdatedBrand(brandName, soundBrand, price);
         System.out.println("Brand has updated successfully !");
     }
 

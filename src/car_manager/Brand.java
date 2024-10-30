@@ -1,16 +1,14 @@
 
-
  package car_manager;
 
 public class Brand {
     private String brandID, brandName, soundBrand;
     private double price;
 
-    Brand () {
-
+   public Brand () {
     }
 
-    Brand (String brandID, String brandName, String soundBrand, double price) {
+    public Brand (String brandID, String brandName, String soundBrand, double price) {
         this.brandID = brandID;
         this.brandName = brandName;
         this.soundBrand = soundBrand;

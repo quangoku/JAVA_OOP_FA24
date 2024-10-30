@@ -2,8 +2,10 @@
 package car_manager;
 
 public class Car implements Comparable <Car> {
+    
     private String carID, color, frameID, engineID;
-    public Brand brand;
+    public Brand brand; 
+    
     public Car () {
 
     }
@@ -39,22 +41,23 @@ public class Car implements Comparable <Car> {
         this.engineID = engineID;
     }
 
-    //Associating fields to a string for outputting a car to screen
     public String screenString () {
+        
         return brand + "\n" + carID + "," + color + "," + frameID + "," + engineID;
     }
 
-    //Used in the operation opf listing cars in ascending order of brand names
+    
     @Override
     public int compareTo (Car car) {
-        int val = this.getBrand().getBrandName().compareTo(car.getBrand().getBrandName());
-        if (val == 0) {
-            val = this.getCarID().compareTo(car.getCarID());
+        int value = this.getBrand().getBrandName().compareTo(car.getBrand().getBrandName());
+        if (value == 0) {
+            value = this.getCarID().compareTo(car.getCarID());
         }
-        return val;
+        return value;
     }
 
-    //Associating fields to a string for writing a car to file
+    
+    
     @Override
     public String toString () {
         return carID + "," + brand.getBrandID() + "," + color + "," + frameID + "," + engineID;
