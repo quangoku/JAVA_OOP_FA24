@@ -8,20 +8,20 @@ public class CarList extends ArrayList<Car> {
 
     private String carID, color, frameID, engineID;
     private Brand brand;
-    
+
     Menu menu = new Menu();
     Scanner scanner = new Scanner(System.in);
-    
+
     BrandList brandList;
-    
+
     BufferedReader br;
     String line;
     String[] arr;
 
     public CarList() {
-        
+
     }
-    
+
     public CarList(BrandList bList) {
         brandList = bList;
     }
@@ -59,8 +59,15 @@ public class CarList extends ArrayList<Car> {
         } catch (IOException e) {
             e.printStackTrace();
         }
-
         return false;
+    }
+
+    public void searchBrandName(String partname) {
+        for (int i = 0; i < this.size(); i++) {
+            if (this.get(i).brand.getBrandName().contains(partname)) {
+                System.out.println(this.get(i));
+            }
+        }
     }
 
     public int searchID(String carID) {
@@ -204,6 +211,7 @@ public class CarList extends ArrayList<Car> {
             System.out.println("Car ID not existed !");
         }
         return false;
+
     }
 
     public void listCars() {

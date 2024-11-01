@@ -7,7 +7,7 @@ public class CarManager {
 
     public static void main(String[] args) throws IOException {
         int choice;
-        boolean checkSuccessful;
+        boolean checkSuccessful =false;
 
         String fileCarsName = "E:\\JAVAWORKSHOP\\CAR_MANAGER\\src\\car_manager\\cars.txt";
         String fileBrandsName = "E:\\JAVAWORKSHOP\\CAR_MANAGER\\src\\car_manager\\brands.txt";
@@ -20,9 +20,9 @@ public class CarManager {
 
         carList.loadFromFile(fileCarsName); //load dữ liệu từ file carlist
 
-        String bID, brandCarID;
+        String bID, brandCarName;
 
-        ArrayList<String> ops = new ArrayList<>(11); //Create ArrayList ops of strings containing options of the program
+        ArrayList<String> ops = new ArrayList<>(11);
 
         ops.add("1 - List all brands");
         ops.add("2 - Add a new brand");
@@ -36,7 +36,7 @@ public class CarManager {
         ops.add("10 - Update a car based on its ID");
         ops.add("11 - Save cars to file, named cars.txt");
 
-        Menu menu = new Menu(); //Create a menu
+        Menu menu = new Menu(); 
 
         do {
             choice = menu.int_getChoice(ops);
@@ -67,12 +67,13 @@ public class CarManager {
                     break;
                 case 7:
                     System.out.print("Input brand: ");
-                    brandCarID = new Scanner(System.in).nextLine();
-                    if (carList.searchID(brandCarID) != -1) {
-                        System.out.println(carList.get(carList.searchID(brandCarID)));
-                    } else {
-                        System.out.println("No result");
-                    }
+                    brandCarName = new Scanner(System.in).nextLine();
+                    carList.searchBrandName(brandCarName);
+//                    if (carList.searchID(brandCarName) != -1) {
+//                        System.out.println(carList.get(carList.searchID(brandCarName)));
+//                    } else {
+//                        System.out.println("No result");
+//                    }
                     break;
                 case 8:
                     carList.addCar();
@@ -96,6 +97,8 @@ public class CarManager {
                 case 11:
                     carList.saveToFile(fileCarsName);
                     break;
+                default:
+               
             }
         } while ((choice > 0) && (choice <= 11));
     }
