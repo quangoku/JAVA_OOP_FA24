@@ -106,16 +106,20 @@ public class CarList extends ArrayList <Car> {
 
     //thêm một car vào arraylist này (this)
     public void addCar() {
-        boolean checkCarID = false; // giả sử như ID không trùng lặp, đặt giá trị ban đầu là false
-        boolean isRightFormat = true;// giả sử như format đúng
+        boolean checkCarID;
+        boolean isRightFormat;
         do {
+            
+            //reset 2 boolean sau mỗi vòng lặp
+            checkCarID = false; // giả sử như ID không trùng lặp, đặt giá trị ban đầu là false
+            isRightFormat = true;// giả sử như format đúng
+            
             System.out.print("Input car ID: ");
-            carID = scanner.nextLine();// input ID to check if guarantee some conditions
+            carID = scanner.nextLine();// input ID to check if guarantee some onditions
             
             if (!carID.matches("C[0-9][0-9]")) {
                 isRightFormat = false; // nếu không đúng format, set boolean to false and prompt message to the user
                 System.out.println("Invalid ID format, the car ID must be in the C00 (2x number from 1 to 9) format");
-                continue;
             }
             //check ID xem có trùng lặp không
             for (Car car : this) {

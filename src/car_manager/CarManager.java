@@ -62,7 +62,7 @@ public class CarManager {
                     System.out.print("Input brand ID: ");
                     bID = new Scanner(System.in).nextLine();
                     if (brandList.searchID(bID) == -1) {
-                        System.out.print("Brand ID not found !");
+                        System.out.println("Brand ID not found !");
                     } else {
                         System.out.println(brandList.get(brandList.searchID(bID)).toString());
                     }
