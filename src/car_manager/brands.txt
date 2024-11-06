@@ -10,3 +10,4 @@ B3-GT18,BMW 320i GT (2018),Bose:1.0
 B3-S19,BMW 320i Sportline (2019),Bose:1.899
 B5-X19,BMW X5 xDrive40i XLine (2019),Bose:4.199
 B5-X20,BMW X5 xDrive40i XLine (2021),Bose:4.239
+

@@ -14,7 +14,7 @@ public class BrandList extends ArrayList<Brand> {
     PrintWriter pw;
     BufferedReader br;
 
-    public boolean loadFromFile(String fileName) {                              // filename là đường dẫn của file txt
+    public boolean loadFromFile(String fileName) throws IOException {                              // filename là đường dẫn của file txt
         try {
             br = new BufferedReader(new FileReader(fileName));            // tạo bufferreader để đọc file
             String[] arr;                                                       // mảng để lưu các giá trị đọc vào dưới dạng string
@@ -28,10 +28,14 @@ public class BrandList extends ArrayList<Brand> {
                 this.add(new Brand(brandID, brandName, soundBrand, price));     // add brand mới với các giá trị đã đọc được từ file txt
                 line = br.readLine();                                           // dọc dòng tiếp theo 
             }
-            br.close();                                                         // giải phóng sau khi đọc xong file 
             return true;                                                        // return true nếu đọc file thành công 
         } catch (Exception e) {
             System.out.println("File " + fileName + " not found !");
+        } finally {
+            if (br != null) {
+                br.close();                                                         // giải phóng sau khi đọc xong file 
+
+            }
         }
         return false;                                                           // báo lỗi nếu đọc file ko thành công  và trả về false
     }
@@ -42,11 +46,15 @@ public class BrandList extends ArrayList<Brand> {
             for (Brand i : this) {
                 pw.println(i);                                                // in ra theo từng dòng
             }
-            pw.close();                                                         // đóng file sau khi viết xong 
             System.out.println("DONE SAVE");
             return true;
         } catch (IOException e) {
             e.printStackTrace();                                                // báo lỗi nếu không mở file thành không
+        } finally {
+            if (pw != null) {
+                pw.close();                                                         // giải phóng sau khi đọc xong file 
+
+            }
         }
         return false;
     }
